@@ -1,0 +1,98 @@
+[
+    {
+        "id": "625b05f9075d0b331c13beb2",
+        "index": 0,
+        "price": "$65.35",
+        "image": "https://i.ibb.co/Pjjs0Ts/aware.png",
+        "name": "Aware Pre-workout",
+        "company": "ZOARERE",
+        "details": "This is a product for anyone who wants to make sure that their workouts are next level. Do not follow the crowd - try to expand your limits by making sure your nutrition is at the best - enhance it by using this product.",
+        "benefits": [
+            "1. Increased focus and power.",
+            "2. Good for emotional health",
+            "3. Boosted energy",
+            "4. 100% Vegan",
+            "5. 40 Servings"
+        ]
+    },
+    {
+        "id": "625b05f98f3b69f47acca584",
+        "index": 1,
+        "price": "$19.32",
+        "image": "https://i.ibb.co/S7GsZ3M/protin-shake.png",
+        "name": "Forest Fruit Protein Milkshake",
+        "company": "BLEEKO",
+        "details": "Forest Fruit Protein Milkshake is a tasty protein shake with as much as 24 grams of protein. It is a vegan product, which can be enjoyed any time - no matter, if you are on a go or just right before your workout.",
+        "benefits": [
+            "1. Increased power.",
+            "2. Packed with protein.",
+            "3. 100% cruelty-free.",
+            "4. 100% Vegan",
+            "5. Great taste."
+        ]
+    },
+    {
+        "id": "625b05f921e777bba3d0be9e",
+        "index": 2,
+        "price": "$59.13",
+        "image": "https://i.ibb.co/tZtrLWB/serum.png",
+        "name": "Serum Pre-workout",
+        "company": "ISBOL",
+        "details": "When it comes to choosing a pre-workout that will get the job done and then some, this is your choice. Created for people, who have an advanced work out routine, Serum Pre-workout makes sure that you can reach for impossible - it enhances your nutrition to help achive the best form.",
+        "benefits": [
+            "1. Increased focus and power.",
+            "2. Good for emotional health",
+            "3. Boosted energy",
+            "4. 100% Vegan",
+            "5. 30 Servings"
+        ]
+    },
+    {
+        "id": "625b0943bbcc2daecb58c78e",
+        "index": 3,
+        "price": "$41.23",
+        "image": "https://i.ibb.co/k9P3bTs/rox.png",
+        "name": "Cookies and Cream Protein Bar",
+        "company": "OBONES",
+        "details": "A protein bar, which is great for your body, makes sure you have enough energy for any physical act and... tastes like cookies and cream! Great for sweet-lovers, who are in search of healthier alternative.",
+        "benefits": [
+            "1. Increased power.",
+            "2. Packed with protein.",
+            "3. 100% cruelty-free.",
+            "4. 100% Vegan.",
+            "5. Great taste."
+        ]
+    },
+    {
+        "id": "625b0943ff0750c8bac032ff",
+        "index": 4,
+        "price": "$46.80",
+        "image": "https://i.ibb.co/0CCHmfP/tan.png",
+        "name": "Tan Vegan Vitamins",
+        "company": "ZILLACON",
+        "details": "Vitamins to make sure that you have a perfect tan all year long. These vitamins prepare your skin for taking in all that sun while at the same providing a natural protection from its negative effects. With a fruity tangerine flavour, this product is the best care for your galden skin we have.",
+        "benefits": [
+            "1. Contains no artificial sweeteners, colors or preservatives.",
+            "2. Eco-friendly production",
+            "3. 100% cruelty-free",
+            "4. 100% Vegan",
+            "5. 60 Servings"
+        ]
+    },
+    {
+        "id": "625b0943c8f725fadb7c750c",
+        "index": 5,
+        "price": "$93.74",
+        "image": "https://i.ibb.co/2d3xWwR/skin.png",
+        "name": "Skin Vegan Vitamins",
+        "company": "ANIXANG",
+        "details": "These supplements make sure that your skin is protected from sun and has a long-lasting youthful glow all year long. Formulated with more than 12 different ingredients, which make sure to give the best nutrients for a healthy skin. It will become your all time favourite because of its effectiveness and a tasty all-natural raspberry flavour.",
+        "benefits": [
+            "1. Contains no artificial sweeteners, colors or preservatives.",
+            "2. 100% cruelty-free",
+            "3. Eco-friendly production",
+            "4. 100% Vegan",
+            "5. 60 Servings"
+        ]
+    }
+]
