@@ -1,6 +1,9 @@
-.nav{
-    background-color: #02B290;
+.navbar{
+    background-color: #AF9D5A;
+    position: sticky;
+    top: 0;
 }
+
 .link{
     text-decoration: none;
     color: white;

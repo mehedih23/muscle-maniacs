@@ -5,7 +5,7 @@ import CustomLink from '../CustomLink/CustomLink'
 
 const NavBar = () => {
     return (
-        <Navbar className='nav' collapseOnSelect expand="lg" >
+        <Navbar className='navbar' collapseOnSelect expand="lg" >
             <Container>
                 <CustomLink style={{ textDecoration: 'none' }} to="/">
                     <h1 className='logo-title'> Muscle <span style={{ color: '#E8BD0D' }}>Maniacs</span></h1>
