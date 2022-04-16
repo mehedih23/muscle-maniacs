@@ -1,0 +1,50 @@
+[
+    {
+        "id": "625b21fdd6cc322a6ec35c42",
+        "index": 0,
+        "price": "$2,875.03",
+        "image": "https://i.ibb.co/stz4gpG/aerobics.jpg",
+        "name": "Aerobics Training",
+        "about": "Aerobics is a form of physical exercise that combines rhythmic aerobic exercise."
+    },
+    {
+        "id": "625b21fd739b37e7412310ef",
+        "index": 1,
+        "price": "$2,695.69",
+        "image": "https://i.ibb.co/0ZvHYb2/cardio.jpg",
+        "name": "Cardio Training",
+        "about": "Regular cardio workouts can: Strengthen your heart and blood vessels. Improve the flow of oxygen throughout your body."
+    },
+    {
+        "id": "625b21fdb4c205a7b494ba92",
+        "index": 2,
+        "price": "$1,193.48",
+        "image": "https://i.ibb.co/YjbkwrW/crossfit.jpg",
+        "name": "Cross Fit Training",
+        "about": "CrossFit is a strength and conditioning workout that is made up of functional movement performed at a high intensity level."
+    },
+    {
+        "id": "625b21fd4b5ccd5248ca04ed",
+        "index": 3,
+        "price": "$1,807.78",
+        "image": "https://i.ibb.co/mzHv8tZ/endurance.jpg",
+        "name": "Endurance Training",
+        "about": "Endurance activity keeps your heart, lungs and circulatory system healthy and improves your overall fitness."
+    },
+    {
+        "id": "625b21fd38e8bc68b0e167af",
+        "index": 4,
+        "price": "$3,963.08",
+        "image": "https://i.ibb.co/hmf2p4k/strength.jpg",
+        "name": "Increase Strength Training",
+        "about": "Strength training or resistance training involves the performance of physical exercises that are designed to improve strength and endurance."
+    },
+    {
+        "id": "625b21fd4eac0562db8a5d8d",
+        "index": 5,
+        "price": "$1,674.54",
+        "image": "https://i.ibb.co/qx3Z6Nh/weightloos.jpg",
+        "name": "Weight Lose Training",
+        "about": "In general, it means that to lose 1 1/2 pounds (0.7 kilograms) a week, you need to reduce your daily calories by 500 to 750 calories."
+    }
+]

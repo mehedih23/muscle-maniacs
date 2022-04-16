@@ -9,7 +9,7 @@ const Keys = () => {
             .then(response => response.json())
             .then(data => setKeys(data))
     }, [])
-    console.log(keys)
+
     return (
         <div className='container'>
             <div className='row'>

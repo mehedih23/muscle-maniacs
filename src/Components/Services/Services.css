@@ -1,0 +1,8 @@
+.see-more-btn{
+    border:none;
+    outline: none;
+    padding: .5rem 2rem;
+    background-color: #120E43;
+    font-size: 20px;
+    color: white;
+}
