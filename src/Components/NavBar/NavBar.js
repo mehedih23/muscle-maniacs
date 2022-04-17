@@ -19,8 +19,8 @@ const NavBar = () => {
                         <CustomLink className='link' to="/contactus">Contact Us</CustomLink>
                     </Nav>
                     <Nav>
-                        <CustomLink className='link' to="/signup">Sign Up</CustomLink>
                         <CustomLink className='link' to="/login">Login</CustomLink>
+                        <CustomLink className='link' to="/signup">Sign Up</CustomLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

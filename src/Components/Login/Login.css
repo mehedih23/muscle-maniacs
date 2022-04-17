@@ -1,0 +1,21 @@
+.btn-login{
+    background-color: #E8BD0D;
+    color: #120E43;
+    border: none;
+    outline: none;
+    padding: .75rem 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.line{
+    border: 1px solid #E8BD0D;
+    height: 0;
+    width: 300px;
+}
+.google{
+    border: none;
+    outline: none;
+    margin: 2rem 0;
+    background-color: white;
+}
