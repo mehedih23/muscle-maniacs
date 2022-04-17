@@ -3,10 +3,12 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCreateUserWithEmailAndPassword, useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init'
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import ClipLoader from "react-spinners/ClipLoader";
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
 const SignUp = () => {
+    <Toaster></Toaster>
     const navigate = useNavigate();
     const [fill, setFill] = useState(false)
     const [name, setName] = useState('');
@@ -15,27 +17,51 @@ const SignUp = () => {
     const [repeatPassword, setRepeatPassword] = useState('');
     const [
         createUserWithEmailAndPassword,
-        user0,
-        loading0,
-        error0,
+        emailUser,
+        emailLoading,
+        emailError,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-    const [user, loading, error] = useAuthState(auth);
+    const [user, userLoading, userError] = useAuthState(auth);
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
-    if (error0 || error) {
-        return (
-            <div>
-                <p>Error: {error?.message}</p>
-            </div>
-        );
+    if (googleError) {
+        <>
+            {toast.error(googleError.message, { id: 'googleError' })}
+        </>
     }
-    if (loading0 || loading) {
-        return <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={loading0 || loading} size={100} /></div>
+    if (emailError) {
+        <>
+            {toast.error(emailError.message, { id: 'emailError' })}
+        </>
     }
-    console.log(user0)
-    if (user || user0) {
-        user.displayName = name;
-        console.log(user?.displayName)
+    if (userError) {
+        <>
+            {toast.error(userError.message, { id: 'userError' })}
+        </>
     }
+
+
+
+
+
+    if (emailLoading || userLoading || googleLoading) {
+        return <>
+            <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={emailLoading} size={100} /></div>
+
+            <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={userLoading} size={100} /></div>
+
+            <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={googleLoading} size={100} /></div>
+        </>
+    }
+
+    if (user || googleUser) {
+        navigate('/')
+    }
+
+    if (emailUser) {
+        emailUser.displayName = name;
+    }
+
 
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -120,7 +146,8 @@ const SignUp = () => {
 
                     </div>
                 </div>
-                <button type="button" className="google">
+                {/* {errorGoogle} */}
+                <button onClick={() => signInWithGoogle()} type="button" className="google">
                     <img style={{ height: '30px', width: '30px' }} src='https://i.ibb.co/pWwbH5K/google.png' alt="google" />
                 </button>
             </div>

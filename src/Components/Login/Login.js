@@ -12,20 +12,32 @@ const Login = () => {
     let from = location.state?.from?.pathname || "/";
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [signInWithEmailAndPassword, , loading, ,] = useSignInWithEmailAndPassword(auth);
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
 
-    if (loading) {
-        return <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={loading} size={50} /></div>
+    if (error) {
+        <>
+            {toast.error(error.message, { id: 'userError' })}
+        </>
     }
+    if (loading) {
+        return <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={loading} size={100} /></div>
+    }
+    if (user) {
+        navigate(from, { replace: true });
+        toast.success('Login Successfully')
+    }
+
 
     const handleLogin = (e) => {
         e.preventDefault();
         signInWithEmailAndPassword(email, password)
-            .then(() => {
-                navigate(from, { replace: true });
-                toast.success('Login Successfully!')
-            })
     }
+
     return (
         <div className='container'>
             <h1 style={{ color: '#120E43' }} className='text-center my-3'>Welcome Back To <span style={{ color: '#E8BD0D' }}>Muscle Maniacs</span></h1>
