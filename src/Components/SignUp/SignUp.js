@@ -45,7 +45,9 @@ const SignUp = () => {
         else {
             toast.success('Account Created Successfully!')
             createUserWithEmailAndPassword(email, password)
-            navigate('/login');
+                .then(() => {
+                    navigate('/login');
+                })
         }
 
     }

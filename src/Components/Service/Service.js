@@ -2,8 +2,10 @@ import './Service.css'
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom'
 
 const Service = (props) => {
+    const navigate = useNavigate()
     const { service } = props;
     const { image, name, price, about } = service;
 
@@ -20,7 +22,7 @@ const Service = (props) => {
                 <h2>{price}</h2>
             </div>
             <div className='service-btn text-center'>
-                <button className=''>
+                <button onClick={() => navigate('/checkout')} className=''>
                     Add <FontAwesomeIcon className='ms-1' icon={faCartShopping} />
                 </button>
             </div>

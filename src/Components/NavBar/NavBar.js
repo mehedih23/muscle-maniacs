@@ -2,9 +2,13 @@ import './NavBar.css'
 import React from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import CustomLink from '../CustomLink/CustomLink'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import auth from '../../firebase.init'
+import { signOut } from 'firebase/auth'
 
 const NavBar = () => {
-    return (
+    const [user] = useAuthState(auth);
+    return (<>
         <Navbar className='navbar' collapseOnSelect expand="lg" >
             <Container>
                 <CustomLink style={{ textDecoration: 'none' }} to="/">
@@ -19,13 +23,18 @@ const NavBar = () => {
                         <CustomLink className='link' to="/contactus">Contact Us</CustomLink>
                     </Nav>
                     <Nav>
-                        <CustomLink className='link' to="/login">Login</CustomLink>
+                        {
+                            user ? <CustomLink onClick={() => signOut(auth)} className='link' to="/">Logout</CustomLink> :
+                                <CustomLink className='link' to="/login">Login</CustomLink>
+
+                        }
                         <CustomLink className='link' to="/signup">Sign Up</CustomLink>
+                        {/* <CustomLink className='link' to="/login">Login</CustomLink><CustomLink className='link' to="/signup">Sign Up</CustomLink> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-    )
+    </>)
 }
 
 export default NavBar

@@ -1,10 +1,30 @@
 import './Login.css'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init'
+import { ClipLoader } from 'react-spinners';
+import toast from 'react-hot-toast';
 
 const Login = () => {
+    const navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [signInWithEmailAndPassword, , loading, ,] = useSignInWithEmailAndPassword(auth);
+
+    if (loading) {
+        return <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={loading} size={50} /></div>
+    }
+
     const handleLogin = (e) => {
         e.preventDefault();
+        signInWithEmailAndPassword(email, password)
+            .then(() => {
+                navigate(from, { replace: true });
+                toast.success('Login Successfully!')
+            })
     }
     return (
         <div className='container'>
@@ -14,14 +34,14 @@ const Login = () => {
                 <div className='row'>
                     <div className="form-outline mb-4 col-lg-8 col-md-6 col-12 mx-auto">
                         <label className="form-label" htmlFor="form2Example1">Email address</label>
-                        <input type="email" id="form2Example1" className="form-control" required />
+                        <input onBlur={(e) => setEmail(e.target.value)} type="email" id="form2Example1" className="form-control" required />
                     </div>
                 </div>
 
                 <div className='row'>
                     <div className="form-outline mb-4 col-lg-8 col-md-6 col-12 mx-auto">
                         <label className="form-label" htmlFor="form2Example2">Password</label>
-                        <input type="password" id="form2Example2" className="form-control" required />
+                        <input onBlur={(e) => setPassword(e.target.value)} type="password" id="form2Example2" className="form-control" required />
                     </div>
                 </div>
 
