@@ -1,65 +1,106 @@
 import './SignUp.css'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useCreateUserWithEmailAndPassword, useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init'
+import toast from 'react-hot-toast';
+import ClipLoader from "react-spinners/ClipLoader";
 
 const SignUp = () => {
+    const navigate = useNavigate();
+    const [fill, setFill] = useState(false)
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
+    const [
+        createUserWithEmailAndPassword,
+        user0,
+        loading0,
+        error0,
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [user, loading, error] = useAuthState(auth);
+
+    if (error0 || error) {
+        return (
+            <div>
+                <p>Error: {error?.message}</p>
+            </div>
+        );
+    }
+    if (loading0 || loading) {
+        return <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={loading0 || loading} size={100} /></div>
+    }
+    console.log(user0)
+    if (user || user0) {
+        user.displayName = name;
+        console.log(user?.displayName)
+    }
+
     const handleSignUp = (e) => {
         e.preventDefault();
+        if (password !== repeatPassword) {
+            toast.error('Password Mismatched!', { id: 'error' })
+        }
+        else {
+            toast.success('Account Created Successfully!')
+            createUserWithEmailAndPassword(email, password)
+            navigate('/login');
+        }
+
     }
     return (
         <div className='container'>
             <h1 style={{ color: '#120E43' }} className='text-center my-3'>Welcome To <span style={{ color: '#E8BD0D' }}>Muscle Maniacs</span></h1>
-            <form action="" onSubmit={handleSignUp}>
+            <form onSubmit={handleSignUp}>
                 <div className='row'>
-                    <div class="form-outline mb-4 col-lg-8 col-lg-6 col-12 mx-auto">
-                        <label class="form-label" for="registerName">Name</label>
-                        <input type="text" id="registerName" class="form-control" required />
+                    <div className="form-outline mb-4 col-lg-8 col-lg-6 col-12 mx-auto">
+                        <label className="form-label" htmlFor="registerName">Name</label>
+                        <input onBlur={(e) => setName(e.target.value)} type="text" id="registerName" className="form-control" required />
                     </div>
                 </div>
 
                 <div className='row'>
-                    <div class="form-outline mb-4 col-lg-8 col-lg-6 col-12 mx-auto">
-                        <label class="form-label" for="registerUsername">Username</label>
-                        <input type="text" id="registerUsername" class="form-control" required />
+                    <div className="form-outline mb-4 col-lg-8 col-lg-6 col-12 mx-auto">
+                        <label className="form-label" htmlFor="registerEmail">Email</label>
+                        <input onBlur={(e) => setEmail(e.target.value)} type="email" id="registerEmail" className="form-control" required />
                     </div>
                 </div>
 
                 <div className='row'>
-                    <div class="form-outline mb-4 col-lg-8 col-lg-6 col-12 mx-auto">
-                        <label class="form-label" for="registerEmail">Email</label>
-                        <input type="email" id="registerEmail" class="form-control" required />
+                    <div className="form-outline mb-4 col-lg-8 col-lg-6 col-12 mx-auto">
+                        <label className="form-label" htmlFor="registerPassword">Password</label>
+                        <input onBlur={(e) => setPassword(e.target.value)} type="password" id="registerPassword" className="form-control" required />
                     </div>
                 </div>
 
                 <div className='row'>
-                    <div class="form-outline mb-4 col-lg-8 col-lg-6 col-12 mx-auto">
-                        <label class="form-label" for="registerPassword">Password</label>
-                        <input type="password" id="registerPassword" class="form-control" required />
-                    </div>
-                </div>
-
-                <div className='row'>
-                    <div class="form-outline mb-4 col-lg-8 col-lg-6 col-12 mx-auto">
-                        <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-                        <input type="password" id="registerRepeatPassword" class="form-control" required />
+                    <div className="form-outline mb-4 col-lg-8 col-lg-6 col-12 mx-auto">
+                        <label className="form-label" htmlFor="registerRepeatPassword">Repeat password</label>
+                        <input onBlur={(e) => setRepeatPassword(e.target.value)} type="password" id="registerRepeatPassword" className="form-control" required />
                     </div>
                 </div>
 
 
-                <div class="form-check d-flex justify-content-center mb-4">
+                <div className="form-check d-flex justify-content-center mb-4">
                     <input
-                        class="form-check-input me-2"
+                        className="form-check-input me-2"
                         type="checkbox"
                         value=""
                         id="registerCheck"
                         aria-describedby="registerCheckHelpText"
+                        onClick={() => setFill(!fill)}
                     />
-                    <label class="form-check-label" for="registerCheck">
+                    <label className="form-check-label" htmlFor="registerCheck">
                         I have read and agree to the terms
                     </label>
                 </div>
                 <div className='row'>
-                    <button type="submit" class="col-2 mx-auto btn-login mb-3">Sign Up</button>
+                    <button
+                        type="submit"
+                        className={`col-2 mx-auto btn-login mb-3`}
+                        disabled={!fill}
+                    >Sign Up</button>
                 </div>
 
 
