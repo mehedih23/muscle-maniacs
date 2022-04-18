@@ -1,5 +1,5 @@
 import './SignUp.css'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCreateUserWithEmailAndPassword, useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init'
@@ -24,6 +24,44 @@ const SignUp = () => {
     const [user, userLoading, userError] = useAuthState(auth);
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
+    // User Start //
+
+    useEffect(() => {
+        if (user || googleUser || emailUser) {
+            navigate('/')
+        }
+    }, [user, googleUser, emailUser, navigate])
+
+    if (user || googleUser) {
+        toast.success('Account Created Successfully!')
+    }
+
+    if (emailUser) {
+        emailUser.displayName = name;
+        toast.success('Account Created Successfully!')
+    }
+
+
+    // User End //
+
+
+    // Loading Start //
+
+    if (emailLoading || userLoading || googleLoading) {
+        return <>
+            <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={emailLoading} size={100} /></div>
+
+            <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={userLoading} size={100} /></div>
+
+            <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={googleLoading} size={100} /></div>
+        </>
+    }
+
+    // Loading End //
+
+
+    // Error start here //
+
     if (googleError) {
         toast.error(googleError.message, { id: 'googleError' })
         navigate('/')
@@ -37,26 +75,8 @@ const SignUp = () => {
         navigate('/')
     }
 
-    if (emailLoading || userLoading || googleLoading) {
-        return <>
-            <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={emailLoading} size={100} /></div>
 
-            <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={userLoading} size={100} /></div>
-
-            <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={googleLoading} size={100} /></div>
-        </>
-    }
-
-    if (user || googleUser) {
-        navigate('/')
-        toast.success('Account Created Successfully!')
-    }
-
-    if (emailUser) {
-        emailUser.displayName = name;
-        navigate('/');
-        toast.success('Account Created Successfully!')
-    }
+    // Error End Here //
 
 
     const handleSignUp = (e) => {

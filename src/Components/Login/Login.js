@@ -1,5 +1,5 @@
 import './Login.css'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init'
@@ -31,6 +31,12 @@ const Login = () => {
 
     // Users start //
 
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true });
+        }
+    }, [from, navigate, user])
+
     if (user) {
         navigate(from, { replace: true });
         toast.success('Login Successfully', { id: 'success' })
@@ -49,18 +55,18 @@ const Login = () => {
         return <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={loading} size={100} /></div>
     }
     if (googleLoading2) {
-        return <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={loading} size={100} /></div>
+        return <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={googleLoading2} size={100} /></div>
     }
 
     // Loading End //
 
 
     // Errors start //
-    if (error || googleError2) {
-        toast.error(error?.message, { id: 'userError' })
+    if (error) {
+        toast.error(error?.message, { id: 'error' })
     }
     if (googleError2) {
-        toast.error(googleError2?.message, { id: 'googleError' })
+        toast.error(googleError2?.message, { id: 'googleError2' })
     }
     // Errors end  //
 
