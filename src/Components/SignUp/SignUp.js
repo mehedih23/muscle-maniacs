@@ -25,24 +25,17 @@ const SignUp = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
     if (googleError) {
-        <>
-            {toast.error(googleError.message, { id: 'googleError' })}
-        </>
+        toast.error(googleError.message, { id: 'googleError' })
+        navigate('/')
     }
     if (emailError) {
-        <>
-            {toast.error(emailError.message, { id: 'emailError' })}
-        </>
+        toast.error(emailError.message, { id: 'emailError' })
+        navigate('/')
     }
     if (userError) {
-        <>
-            {toast.error(userError.message, { id: 'userError' })}
-        </>
+        toast.error(userError.message, { id: 'userError' })
+        navigate('/')
     }
-
-
-
-
 
     if (emailLoading || userLoading || googleLoading) {
         return <>
@@ -56,10 +49,13 @@ const SignUp = () => {
 
     if (user || googleUser) {
         navigate('/')
+        toast.success('Account Created Successfully!')
     }
 
     if (emailUser) {
         emailUser.displayName = name;
+        navigate('/');
+        toast.success('Account Created Successfully!')
     }
 
 
@@ -69,11 +65,7 @@ const SignUp = () => {
             toast.error('Password Mismatched!', { id: 'error' })
         }
         else {
-            toast.success('Account Created Successfully!')
             createUserWithEmailAndPassword(email, password)
-                .then(() => {
-                    navigate('/login');
-                })
         }
 
     }

@@ -1,17 +1,22 @@
 import './Login.css'
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init'
 import { ClipLoader } from 'react-spinners';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
+    <Toaster></Toaster>
     const navigate = useNavigate();
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+
+    const emailRef1 = useRef('')
+    const passwordRef1 = useRef('')
+
+    // Email and password login //
+
     const [
         signInWithEmailAndPassword,
         user,
@@ -19,22 +24,51 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    if (error) {
-        <>
-            {toast.error(error.message, { id: 'userError' })}
-        </>
+    // Google Sign In //
+
+    const [signInWithGoogle, googleUser2, googleLoading2, googleError2] = useSignInWithGoogle(auth);
+
+
+    // Users start //
+
+    if (user) {
+        navigate(from, { replace: true });
+        toast.success('Login Successfully', { id: 'success' })
     }
+    if (googleUser2) {
+        navigate(from, { replace: true });
+        toast.success('Login Successfully', { id: 'success' })
+    }
+
+    // Users end  //
+
+
+    // Loading start //
+
     if (loading) {
         return <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={loading} size={100} /></div>
     }
-    if (user) {
-        navigate(from, { replace: true });
-        toast.success('Login Successfully')
+    if (googleLoading2) {
+        return <div className='vh-100 d-flex justify-content-center align-items-center'><ClipLoader loading={loading} size={100} /></div>
     }
 
+    // Loading End //
 
+
+    // Errors start //
+    if (error || googleError2) {
+        toast.error(error?.message, { id: 'userError' })
+    }
+    if (googleError2) {
+        toast.error(googleError2?.message, { id: 'googleError' })
+    }
+    // Errors end  //
+
+    // Event Handler //
     const handleLogin = (e) => {
         e.preventDefault();
+        const email = emailRef1.current.value;
+        const password = passwordRef1.current.value;
         signInWithEmailAndPassword(email, password)
     }
 
@@ -46,14 +80,14 @@ const Login = () => {
                 <div className='row'>
                     <div className="form-outline mb-4 col-lg-8 col-md-6 col-12 mx-auto">
                         <label className="form-label" htmlFor="form2Example1">Email address</label>
-                        <input onBlur={(e) => setEmail(e.target.value)} type="email" id="form2Example1" className="form-control" required />
+                        <input ref={emailRef1} type="email" id="form2Example1" className="form-control" required />
                     </div>
                 </div>
 
                 <div className='row'>
                     <div className="form-outline mb-4 col-lg-8 col-md-6 col-12 mx-auto">
                         <label className="form-label" htmlFor="form2Example2">Password</label>
-                        <input onBlur={(e) => setPassword(e.target.value)} type="password" id="form2Example2" className="form-control" required />
+                        <input ref={passwordRef1} type="password" id="form2Example2" className="form-control" required />
                     </div>
                 </div>
 
@@ -85,7 +119,7 @@ const Login = () => {
 
                     </div>
                 </div>
-                <button type="button" className="google">
+                <button onClick={() => signInWithGoogle()} type="button" className="google">
                     <img style={{ height: '30px', width: '30px' }} src='https://i.ibb.co/pWwbH5K/google.png' alt="google" />
                 </button>
             </div>
