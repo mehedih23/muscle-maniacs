@@ -11,6 +11,9 @@ import CheckOut from './Components/CheckOut/CheckOut';
 import NotFound from './Components/NotFound/NotFound';
 import Blog from './Components/Blog/Blog';
 import AboutMe from './Components/AboutMe/AboutMe';
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
+import Products from './Components/Products/Products';
+import ContactForm from './Components/ContactForm/ContactForm';
 
 function App() {
   return (
@@ -19,8 +22,7 @@ function App() {
       <NavBar></NavBar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/login' element={<Login></Login>}></Route>
-        <Route path='/signup' element={<SignUp></SignUp>}></Route>
+        <Route path='/shop' element={<Products></Products>}></Route>
         <Route path='/checkout' element={
           <RequireAuth>
             <CheckOut></CheckOut>
@@ -28,6 +30,10 @@ function App() {
         }></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/about' element={<AboutMe></AboutMe>}></Route>
+        <Route path='/contactus' element={<ContactForm></ContactForm>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/signup' element={<SignUp></SignUp>}></Route>
+        <Route path='forgot-password' element={<ForgotPassword></ForgotPassword>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

@@ -7,8 +7,10 @@ const Products = () => {
     const [products] = useProducts()
     return (
         <div className='container'>
-            <h1>Products</h1>
-            <p>Your body actually needs more than 40 different nutrients for good health, and there is not one single source for them.  Your daily food selection should include a balance of good carbs, protein, fruits, veggies, and dairy products. Check out those food.</p>
+            <div className='text-center mt-4'>
+                <h1 style={{ color: '#120E43', textDecoration: 'underline' }}>Products</h1>
+                <p>Your body actually needs more than 40 different nutrients for good health, and there is not one single source for them.  Your daily food selection should include a balance of good carbs, protein, fruits, veggies, and dairy products. Check out those food.</p>
+            </div>
             <div className='row'>
                 {
                     products.map(product => <Product

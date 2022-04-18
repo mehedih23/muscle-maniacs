@@ -104,7 +104,7 @@ const Login = () => {
                     </div>
 
                     <div className="col-auto mx-auto">
-                        <Link to="/reset-password">Forgot password?</Link>
+                        <Link to="/forgot-password">Forgot password?</Link>
                     </div>
                 </div>
 
