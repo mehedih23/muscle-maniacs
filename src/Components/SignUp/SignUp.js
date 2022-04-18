@@ -158,7 +158,7 @@ const SignUp = () => {
 
                     </div>
                 </div>
-                {/* {errorGoogle} */}
+
                 <button onClick={() => signInWithGoogle()} type="button" className="google">
                     <img style={{ height: '30px', width: '30px' }} src='https://i.ibb.co/pWwbH5K/google.png' alt="google" />
                 </button>
