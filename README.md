@@ -1,4 +1,4 @@
-# Welcome To Muscle Maniacs
+# Welcome To :muscle: Muscle Maniacs
 
 Live sites [Firebase](https://muscle-maniacs.firebaseapp.com/)
 [Web App](https://muscle-maniacs.web.app/)
