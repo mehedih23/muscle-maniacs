@@ -1,5 +1,5 @@
-import './CheckOut.css'
 import React, { useState } from 'react'
+import './CheckOut.css'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
@@ -7,6 +7,7 @@ const CheckOut = () => {
     const [checked, setChecked] = useState(false)
     const navigate = useNavigate()
 
+    // Submit function //
     const handlePlaceOrder = (e) => {
         e.preventDefault();
         navigate('/')
@@ -17,6 +18,8 @@ const CheckOut = () => {
             <div className='text-center'>
                 <h1 className='my-3'>Please Checkout!</h1>
             </div>
+
+            {/* form start */}
             <form onSubmit={handlePlaceOrder}>
                 <div className="row mb-4">
                     <div className="col-md-6 col-lg-8 col-12 mx-auto">

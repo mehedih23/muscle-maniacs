@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 
 const WhyUs = () => {
     const [us, setUs] = useState([])
+
+    // useEffect for get data //
     useEffect(() => {
         fetch('whyus.json')
             .then(response => response.json())
@@ -12,6 +14,7 @@ const WhyUs = () => {
         <div className='container'>
             <h1 className='text-center text-decoration-underline mt-5'><span style={{ color: '#E8BD0D' }}>Why</span> Choose Us</h1>
             <div>
+                {/* mapping */}
                 {
                     us.map(item => <div className='my-3 d-md-flex flex-lg-row flex-md-row justify-content-lg-around align-items-md-center align-items-lg-center' key={item.id}>
                         <div className='w-100 w-md-50 text-center'>

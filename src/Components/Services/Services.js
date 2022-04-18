@@ -8,6 +8,8 @@ const Services = () => {
     return (
         <div className='container'>
             <h2 style={{ color: '#120E43' }} className='my-3 text-center'>Our Services</h2>
+
+            {/* mapping services */}
             <div className='row'>
                 {
                     services.map(service => <Service

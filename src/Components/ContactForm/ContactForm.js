@@ -1,10 +1,12 @@
-import './ContactForm.css'
 import React from 'react'
+import './ContactForm.css'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast';
 
 const ContactForm = () => {
     const navigate = useNavigate();
+
+    // submit function //
     const handleContact = (e) => {
         e.preventDefault()
         navigate('/')
@@ -16,6 +18,9 @@ const ContactForm = () => {
             <div className='text-center my-3'>
                 <h2>Anything To Say? Please <strong style={{ color: '#E8BD0D' }}> Contact</strong></h2>
             </div>
+
+            {/* form */}
+
             <form onSubmit={handleContact}>
                 <div className='row'>
                     <div class="form-outline mb-4 col-md-6 col-lg-8 col-12 mx-auto">

@@ -1,5 +1,5 @@
-import './Home.css'
 import React from 'react'
+import './Home.css'
 import Banner from '../Banner/Banner'
 import Keys from '../Keys/Keys'
 import Services from '../Services/Services'
@@ -12,7 +12,6 @@ const Home = () => {
             <Keys></Keys>
             <Services></Services>
             <WhyUs></WhyUs>
-
         </div>
     )
 }

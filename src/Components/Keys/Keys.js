@@ -1,9 +1,11 @@
-import './Keys.css'
 import React, { useEffect, useState } from 'react'
+import './Keys.css'
 import Key from '../Key/Key'
 
 const Keys = () => {
     const [keys, setKeys] = useState([])
+
+    // useEffect to get value //
     useEffect(() => {
         fetch('keys.json')
             .then(response => response.json())

@@ -1,5 +1,5 @@
-import './RequireAuth.css'
 import * as React from "react";
+import './RequireAuth.css'
 import {
     useLocation,
     Navigate

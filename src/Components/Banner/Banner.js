@@ -1,9 +1,11 @@
-import './Banner.css'
 import React from 'react'
+import './Banner.css'
 import { Link } from 'react-router-dom'
 
 const Banner = () => {
     return (
+
+        // Banner //
         <div className='banner'>
             <div className='container'>
                 <h1 className='banner-title'>Power in every step</h1>

@@ -1,3 +1,5 @@
+// All products //
+
 import { useEffect, useState } from "react";
 
 const useProducts = () => {

@@ -1,5 +1,5 @@
-import './NavBar.css'
 import React from 'react'
+import './NavBar.css'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import CustomLink from '../CustomLink/CustomLink'
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -11,11 +11,14 @@ const NavBar = () => {
     return (<>
         <Navbar className='navbar' collapseOnSelect expand="lg" >
             <Container>
+
+                {/* brand name */}
                 <CustomLink style={{ textDecoration: 'none' }} to="/">
                     <h1 className='logo-title'> Muscle <span style={{ color: '#E8BD0D' }}>Maniacs</span></h1>
                 </CustomLink>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
+                    {/* link */}
                     <Nav className="me-auto">
                         <CustomLink className='link' to="/shop">Shop</CustomLink>
                         <CustomLink className='link' to="/about">About</CustomLink>
@@ -29,7 +32,6 @@ const NavBar = () => {
 
                         }
                         <CustomLink className='link' to="/signup">Sign Up</CustomLink>
-                        {/* <CustomLink className='link' to="/login">Login</CustomLink><CustomLink className='link' to="/signup">Sign Up</CustomLink> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -1,13 +1,19 @@
-import './Blog.css'
 import React from 'react'
+import './Blog.css'
 import { Accordion } from 'react-bootstrap'
 
 const Blog = () => {
     return (
         <div className='container my-3'>
+
+            {/* title */}
+
             <div className='my-3'>
                 <h2 style={{ backgroundColor: '#120E43' }} className='text-center text-light py-3 border rounded-top'>Have a great Journey In <span style={{ color: '#E8BD0D' }}>QNA</span></h2>
             </div>
+
+            {/* question one */}
+
             <Accordion defaultActiveKey="0">
                 <Accordion.Item eventKey="0">
                     <Accordion.Header>Difference between authorization and authentication</Accordion.Header>
@@ -18,6 +24,9 @@ const Blog = () => {
                         <p>Authentication is the act of proving an claim, such as the recognition of a computer system user. In dissimillerity with identification, the act of indicating a person or thing's identity, authentication is the procedure of verifying that identity.</p>
                     </Accordion.Body>
                 </Accordion.Item>
+
+                {/* question two */}
+
                 <Accordion.Item eventKey="1">
                     <Accordion.Header>Why are you using firebase? What other options do you have to implement authentication?</Accordion.Header>
                     <Accordion.Body>
@@ -40,6 +49,10 @@ const Blog = () => {
 
                     </Accordion.Body>
                 </Accordion.Item>
+
+
+                {/* question three */}
+
                 <Accordion.Item eventKey="2">
                     <Accordion.Header>What other services does firebase provide other than authentication?</Accordion.Header>
                     <Accordion.Body>

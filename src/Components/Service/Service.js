@@ -1,5 +1,5 @@
-import './Service.css'
 import React from 'react'
+import './Service.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
@@ -11,9 +11,11 @@ const Service = (props) => {
 
     return (
         <div className='service-container my-3 col-lg-4 col-md-6 col-12'>
+            {/* service image */}
             <div>
                 <img className='img-fluid' src={image} alt="service" />
             </div>
+            {/* service details */}
             <div>
                 <p>{about}</p>
             </div>
@@ -21,6 +23,7 @@ const Service = (props) => {
                 <h3>{name}</h3>
                 <h2>{price}</h2>
             </div>
+            {/* add button */}
             <div className='service-btn text-center'>
                 <button onClick={() => navigate('/checkout')} className=''>
                     Add <FontAwesomeIcon className='ms-1' icon={faCartShopping} />
