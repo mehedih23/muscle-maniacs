@@ -10,6 +10,7 @@ import RequireAuth from './Components/RequireAuth/RequireAuth';
 import CheckOut from './Components/CheckOut/CheckOut';
 import NotFound from './Components/NotFound/NotFound';
 import Blog from './Components/Blog/Blog';
+import AboutMe from './Components/AboutMe/AboutMe';
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
-
+        <Route path='/about' element={<AboutMe></AboutMe>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
